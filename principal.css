@@ -1,5 +1,6 @@
 * {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-sizing: border-box; 
 }
 
 body {
@@ -8,22 +9,25 @@ body {
   background: linear-gradient(#1a1a1a ,#9b2226,#1a1a1a);
   color: #BDBDBD;
   font-family: Copperplate, sans-serif;
+  overflow-x: hidden; 
 }
 
-h1 { color:#DAA520; }
-h2, h3 { color:#BDBDBD; }
+h1 { color:#DAA520; text-align: center; } 
+h2, h3 { color:#BDBDBD; text-align: center; }
 
 
 .section {
   width: 100%;
-  padding: 40px 0;
+  padding: 40px 10px; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .contenedor{
-  display: none; /* 🔥 oculto al inicio */
+  display: none; 
 }
+
 .menu-btn{
   position: fixed;
   top: 15px;
@@ -43,6 +47,7 @@ h2, h3 { color:#BDBDBD; }
   display: none;
   z-index: 1000;
 }
+
 .btn-vaciar {
   background: rgb(254, 0, 0);
   color: white;
@@ -53,26 +58,27 @@ h2, h3 { color:#BDBDBD; }
   box-shadow: 0 0 10px red;
   transform: scale(1.1);
 }
+
 #reloj{
   width: 500px;
-  height: 500px;
+  height: auto; 
+  max-width: 90%; 
   border-radius: 100%;
 }
 
 #reloj:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 0 20px gold;
   transition: 0.5s;
 }
-
 
 .idiomas {
   display: flex;
   justify-content: center;
   gap: 15px;
   margin-bottom: 20px;
-  text-align: left;
-  margin-right: 1090px;
+  text-align: center; 
+  margin-right: 0; 
 }
 
 .idiomas button {
@@ -84,7 +90,6 @@ h2, h3 { color:#BDBDBD; }
   cursor: pointer;
   font-weight: bold;
 }
-
 
 .idiomas button:hover {
   background: gold;
@@ -99,11 +104,11 @@ h2, h3 { color:#BDBDBD; }
   transform: scale(1.1);
 }
 
-
 .menu-opciones {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  flex-wrap: wrap; 
+  gap: 30px; 
 }
 
 .menu-opciones div {
@@ -118,7 +123,9 @@ h2, h3 { color:#BDBDBD; }
 .menu-opciones img {
   width: 250px;
   height: 200px;
+  max-width: 100%; 
   border-radius: 20px;
+  object-fit: cover; 
 }
 
 .menu-opciones img:hover {
@@ -126,14 +133,12 @@ h2, h3 { color:#BDBDBD; }
   box-shadow: 0 0 20px gold;
 }
 
-
 .contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
-  padding: 30px;
+  padding: 20px; /* MODIFICADO */
 }
-
 
 .card {
   background: rgba(0,0,0,0.7);
@@ -166,7 +171,6 @@ h2, h3 { color:#BDBDBD; }
   font-size: 14px;
 }
 
-/* 🔥 SELECT BONITO */
 .selector {
   background: rgba(0,0,0,0.6);
   color: #DAA520;
@@ -181,7 +185,6 @@ h2, h3 { color:#BDBDBD; }
   box-shadow: 0 0 10px gold;
 }
 
-/* PRECIO */
 .precio {
   color: gold;
   font-weight: bold;
@@ -189,7 +192,6 @@ h2, h3 { color:#BDBDBD; }
   font-size: 16px;
 }
 
-/* BOTÓN */
 .card button {
   background: rgba(0,51,160,0.5);
   color: #1a1a1a;
@@ -206,11 +208,11 @@ h2, h3 { color:#BDBDBD; }
   box-shadow: 0 0 10px gold;
 }
 
-
 .carrito-box {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 2000; 
 }
 
 #carrito {
@@ -229,7 +231,6 @@ h2, h3 { color:#BDBDBD; }
   box-shadow: 0 0 20px gold;
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -240,13 +241,15 @@ h2, h3 { color:#BDBDBD; }
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
+  z-index: 3000; 
 }
 
 .modal-contenido {
   background: #1a1a1a;
   padding: 20px;
   border-radius: 20px;
-  width: 320px;
+  width: 90%; 
+  max-width: 320px;
   text-align: center;
   box-shadow: 0 0 20px gold;
 }
@@ -254,7 +257,6 @@ h2, h3 { color:#BDBDBD; }
 .modal-contenido h2 {
   color: gold;
 }
-
 
 .modal-contenido ul {
   list-style: none;
@@ -269,13 +271,11 @@ h2, h3 { color:#BDBDBD; }
   font-size: 14px;
 }
 
-/* TOTAL */
 #total {
   color: gold;
   margin-top: 10px;
 }
 
-/* BOTÓN MODAL */
 .modal-contenido button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -287,19 +287,13 @@ h2, h3 { color:#BDBDBD; }
   font-weight: bold;
 }
 
-.modal-contenido button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px gold;
-}
-
-/* FOOTER */
 footer {
   background: #1a1a1a;
   color: white;
   padding: 10px;
+  text-align: center;
 }
 
-/* ANIMACIÓN */
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -311,7 +305,22 @@ footer {
   }
 }
 
-.modal-contenido button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px gold;
+
+@media (max-width: 600px) {
+  .menu-opciones {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #reloj {
+    width: 280px; 
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .contenedor {
+    grid-template-columns: 1fr; 
+  }
 }
