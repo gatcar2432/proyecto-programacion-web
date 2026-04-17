@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUCH'TAL KANTÉ</title>
+
+<link rel="stylesheet" href="principal.css">
+</head>
+
+<body>
+
+<div class="section">
+  <h1><i>MUCH'TAL KANTÉ</i></h1>
+  <h2>EXPERIENCIA GASTRONÓMICA PREHISPÁNICA</h2>
+
+  <img id="reloj" src="reloj2.jpg">
+  <h3><i>Desliza para continuar</i></h3>
+</div>
+
+<div class="menu-opciones">
+  <div onclick="mostrarMenu('desayuno')">
+    <img src="sol.jpg">
+    <p>DESAYUNO</p>
+  </div>
+
+  <div onclick="mostrarMenu('comida')">
+    <img src="viento.jpg">
+    <p>COMIDA</p>
+  </div>
+
+  <div onclick="mostrarMenu('cena')">
+    <img src="luna.jpg">
+    <p>CENA</p>
+  </div>
+</div>
+
+
+<div id="contenedor-platillos" class="contenedor" style="display:none;"></div>
+
+<div class="carrito-box">
+<button id="carrito" onclick="verCarrito()">🛒 (0) $0</button>
+</div>
+
+
+<div id="modalCarrito" class="modal">
+  <div class="modal-contenido">
+    <h2>Tu pedido</h2>
+    <ul id="listaCarrito"></ul>
+    <h3 id="total"></h3>
+    <button onclick="cerrarCarrito()">Cerrar</button>
+  <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+  </div>
+</div>
+
+<footer>
+<h3>Redes Sociales</h3>
+📍Calle 30 Tepic<br>
+📞52585757<br>
+✉️ practica@gmail.com
+</footer>
+
+<script>
+
+let tipoActual = "";
+let carrito = [];
+let total = 0;
+
+
+const menus = {
+
+desayuno:[
+{nombre:"Atole de maíz",descripcion:"Bebida espesa de maíz tradicional.",precio:65,imagen:"platillo1.jpg"},
+{nombre:"Pan de maíz",descripcion:"Pan cocido con técnicas ancestrales.",precio:75,imagen:"platillo2.jpg"},
+{nombre:"Tortilla con chaya",descripcion:"Tortillas nutritivas con chaya.",precio:70,imagen:"platillo3.jpg"},
+{nombre:"Atole de cacao",descripcion:"Bebida de cacao tradicional.",precio:80,imagen:"platillo1.jpg"},
+{nombre:"Tamal de frijol",descripcion:"Tamal relleno de frijol.",precio:85,imagen:"platillo2.jpg"},
+{nombre:"Fruta con miel",descripcion:"Fruta fresca con miel.",precio:60,imagen:"platillo3.jpg"},
+{nombre:"Pozol",descripcion:"Bebida refrescante de maíz.",precio:55,imagen:"platillo1.jpg"},
+{nombre:"Cacao espumoso",descripcion:"Bebida ceremonial.",precio:90,imagen:"platillo2.jpg"}
+],
+
+comida:[
+{nombre:"Cochinita pibil",descripcion:"Cerdo cocido bajo tierra con achiote.",precio:150,imagen:"platillo1.jpg"},
+{nombre:"Relleno negro",descripcion:"Platillo con recado negro.",precio:140,imagen:"platillo2.jpg"},
+{nombre:"Sopa de lima",descripcion:"Caldo con toque cítrico.",precio:120,imagen:"platillo3.jpg"},
+{nombre:"Papadzules",descripcion:"Tortillas con huevo y pepita.",precio:130,imagen:"platillo1.jpg"},
+{nombre:"Poc chuc",descripcion:"Carne asada con cítricos.",precio:160,imagen:"platillo2.jpg"},
+{nombre:"Frijol con puerco",descripcion:"Guiso tradicional.",precio:135,imagen:"platillo3.jpg"},
+{nombre:"Tamales colados",descripcion:"Tamales suaves tradicionales.",precio:120,imagen:"platillo1.jpg"},
+{nombre:"Tikin Xic",descripcion:"Pescado con achiote asado.",precio:170,imagen:"platillo2.jpg"}
+],
+
+cena:[
+{nombre:"Panuchos",descripcion:"Tortillas rellenas fritas.",precio:95,imagen:"platillo1.jpg"},
+{nombre:"Salbutes",descripcion:"Antojitos fritos.",precio:100,imagen:"platillo2.jpg"},
+{nombre:"Empanadas",descripcion:"Masa rellena frita.",precio:90,imagen:"platillo3.jpg"},
+{nombre:"Tamales dulces",descripcion:"Tamales dulces tradicionales.",precio:85,imagen:"platillo1.jpg"},
+{nombre:"Atole ligero",descripcion:"Bebida ligera nocturna.",precio:60,imagen:"platillo2.jpg"},
+{nombre:"Caldo de pavo",descripcion:"Caldo tradicional.",precio:110,imagen:"platillo3.jpg"},
+{nombre:"Queso con miel",descripcion:"Combinación dulce.",precio:80,imagen:"platillo1.jpg"},
+{nombre:"Elote asado",descripcion:"Maíz asado con sal.",precio:70,imagen:"platillo2.jpg"}
+]
+
+};
+
+
+function mostrarMenu(tipo){
+  tipoActual = tipo;
+
+  let contenedor = document.getElementById("contenedor-platillos");
+  contenedor.style.display = "grid"; // 🔥 aparece
+  contenedor.innerHTML = "";
+
+  menus[tipo].forEach((p,i)=>{
+    contenedor.innerHTML += `
+    <div class="card">
+      <img src="${p.imagen}">
+      <h3>${p.nombre}</h3>
+      <p>${p.descripcion}</p>
+
+      <select id="tipo${i}" class="selector">
+        <option value="llevar">Llevar</option>
+        <option value="aqui">Comer aquí</option>
+      </select>
+
+      <p class="precio">$${p.precio}</p>
+
+      <button onclick="agregar(${i})">Agregar</button>
+    </div>
+    `;
+  });
+}
+
+
+function agregar(index){
+  let p = menus[tipoActual][index];
+  let tipo = document.getElementById("tipo"+index).value;
+
+  let extra = (tipo === "aqui") ? 15 : 0;
+  let precioFinal = p.precio + extra;
+
+  carrito.push({
+    nombre: p.nombre,
+    tipo: tipo,
+    precio: precioFinal
+  });
+
+  total += precioFinal;
+
+  document.getElementById("carrito").innerText =
+  "🛒 (" + carrito.length + ") $" + total;
+}
+
+
+function verCarrito(){
+  let lista = document.getElementById("listaCarrito");
+  lista.innerHTML = "";
+
+  carrito.forEach(item=>{
+    lista.innerHTML += `
+    <li>${item.nombre} - ${item.tipo} - $${item.precio}</li>`;
+  });
+
+  document.getElementById("total").innerText =
+  "Total: $" + total;
+
+  document.getElementById("modalCarrito").style.display = "flex";
+}
+
+
+function cerrarCarrito(){
+  document.getElementById("modalCarrito").style.display = "none";
+}
+
+
+function vaciarCarrito(){
+  carrito = [];
+  total = 0;
+
+  document.getElementById("carrito").innerText = "🛒 (0) $0";
+  document.getElementById("listaCarrito").innerHTML = "";
+  document.getElementById("total").innerText = "Total: $0";
+}
+
+</script>
+
+</body>
+</html>

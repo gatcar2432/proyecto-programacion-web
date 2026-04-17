@@ -1,0 +1,317 @@
+* {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#1a1a1a ,#9b2226,#1a1a1a);
+  color: #BDBDBD;
+  font-family: Copperplate, sans-serif;
+}
+
+h1 { color:#DAA520; }
+h2, h3 { color:#BDBDBD; }
+
+
+.section {
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contenedor{
+  display: none; /* 🔥 oculto al inicio */
+}
+.menu-btn{
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu{
+  position: fixed;
+  top: 50px;
+  left: 15px;
+  background: rgba(0,0,0,0.9);
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  z-index: 1000;
+}
+.btn-vaciar {
+  background: rgb(254, 0, 0);
+  color: white;
+}
+
+.btn-vaciar:hover {
+  background: rgba(255, 0, 0, 0.74);
+  box-shadow: 0 0 10px red;
+  transform: scale(1.1);
+}
+#reloj{
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+}
+
+#reloj:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px gold;
+  transition: 0.5s;
+}
+
+
+.idiomas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-right: 1090px;
+}
+
+.idiomas button {
+  background: rgba(0,0,0,0.7);
+  color: #DAA520;
+  border: 1px solid gold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.idiomas button:hover {
+  background: gold;
+  color: #1a1a1a;
+  box-shadow: 0 0 10px gold;
+}
+
+.idiomas button.activo {
+  background: gold;
+  color: #1a1a1a;
+  box-shadow: 0 0 15px gold;
+  transform: scale(1.1);
+}
+
+
+.menu-opciones {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.menu-opciones div {
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-opciones div:hover {
+  transform: scale(1.08);
+}
+
+.menu-opciones img {
+  width: 250px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.menu-opciones img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px gold;
+}
+
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+}
+
+
+.card {
+  background: rgba(0,0,0,0.7);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 10px;
+  animation: aparecer 0.5s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 10px gold,
+              0 0 20px gold,
+              0 0 40px rgba(255,215,0,0.5);
+}
+
+.card h3 {
+  color: #DAA520;
+}
+
+.card p {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 🔥 SELECT BONITO */
+.selector {
+  background: rgba(0,0,0,0.6);
+  color: #DAA520;
+  border: 1px solid gold;
+  padding: 8px;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.selector:hover {
+  box-shadow: 0 0 10px gold;
+}
+
+/* PRECIO */
+.precio {
+  color: gold;
+  font-weight: bold;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* BOTÓN */
+.card button {
+  background: rgba(0,51,160,0.5);
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card button:hover {
+  background: rgba(0,51,160,0.9);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px gold;
+}
+
+
+.carrito-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#carrito {
+  background: linear-gradient(45deg, gold, orange);
+  color: #1a1a1a;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px gold;
+}
+
+#carrito:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px gold;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 20px gold;
+}
+
+.modal-contenido h2 {
+  color: gold;
+}
+
+
+.modal-contenido ul {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.modal-contenido li {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+}
+
+/* TOTAL */
+#total {
+  color: gold;
+  margin-top: 10px;
+}
+
+/* BOTÓN MODAL */
+.modal-contenido button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: gold;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-contenido button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px gold;
+}
+
+/* FOOTER */
+footer {
+  background: #1a1a1a;
+  color: white;
+  padding: 10px;
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-contenido button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px gold;
+}

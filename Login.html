@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+           margin: 10px;
+  padding: 72px;
+background: linear-gradient(#1a1a1a,#b6860c);
+  color: #BDBDBD;
+  font-family: Copperplate, sans-serif;
+        }
+div{
+margin: 10px ;
+   background-color: rgb(24, 26, 24);
+    border-radius: 60px;
+    text-align: center;
+    height: 1000;
+    width: 1000;
+}
+h1{
+    
+     color:#DAA520;
+}
+#user{
+    
+    margin: auto;
+    font-style: italic;
+    font-size: 15px;
+color:#DAA520;
+border-radius: 10px;
+
+}
+#pass{
+    border-radius: 10px;
+      margin: auto;
+   color:#DAA520;
+     font-size: 15px;
+     
+}
+input{
+padding: 5px;
+
+}
+button{
+    border-radius: 10px;
+    background-color: aquamarine;
+
+}
+img:hover{
+    transform:scale(1.1);
+}
+img{
+    margin-top: auto;
+    padding: 1px;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+}
+
+.img{
+    background-color: rgba(49, 50, 49, 0);
+}
+
+    </style>
+</head>
+<body>
+<div>
+    <div>
+ <font face="Copperplate"><h1>LOGIN</h1></font>
+<div>
+    <form onsubmit="login();return false;">
+    <input id="user" type="text"placeholder="usuario" onkeydown="mover(event, 'pass')">
+</div>
+<div>
+    <input id="pass" type="password" placeholder="clave">
+</div>
+<div>
+    <button onclick="login()">Entrar</button>
+</div>
+</form>
+
+<div>
+    <p id="res"></p>
+</div>
+</div>
+<br><br>
+<div class="img">
+<img src="maya.jpg" id="imagen">
+</div>
+
+   
+
+<script>
+function mover(e,pass){
+
+    if(e.key ==="Enter"){
+        e.preventDefault();
+
+        document.getElementById(pass).focus();
+    }
+}
+function EnterLogin(){
+    if(e.key === "Enter"){
+        login();
+    }
+
+
+}
+function login(){
+
+let usuario = document.getElementById("user").value;
+let acceso = document.getElementById("pass").value;
+
+if(usuario =="" || acceso ==""){
+document.getElementById("res").innerHTML="NO PUEDES DEJAR CAMPOS VACIOS";
+return;
+
+}
+if(usuario =="Carlos" && acceso =="2412" || usuario =="Tania" && acceso =="0912"){
+window.location.href="principal.html";
+}
+else {
+document.getElementById("res").innerHTML
+="Datos incorrectos"
+}
+
+}
+
+</script>
+    
+</body>
+</html>
