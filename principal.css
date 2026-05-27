@@ -91,6 +91,17 @@ box-shadow: 0 0 19px green;
 }
 .btn-pagar{
   transition: .5s;
+
+}
+#btn-final{
+  background-color: rgba(128, 255, 0, 0.182);
+    transition: .5s;
+
+}
+#btn-final:hover{
+transform: translateY(-3px);
+box-shadow: 0 0 19px green;
+ background-color:#e8f807b2;
 }
 #cerrar{
   margin-top: 20px;
@@ -340,7 +351,7 @@ footer {
   color: white;
   padding: 10px;
   text-align: center;
-  display: none;
+
 }
 
 @keyframes aparecer {

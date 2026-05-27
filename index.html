@@ -60,7 +60,7 @@
   <button class="metodo" onclick="pagoTarjeta()">Tarjeta</button>
 <div id="fondoPagoTarjeta">
 <input type="text" placeholder="Ingresa tu nombre completo" id="nombre">
-<input type="text" placeholder="Ingresa tu numero de tarjeta" id="numero">
+<input type="text" placeholder="Ingresa tu numero de tarjeta" id="numero" maxlength="19" oninput="formatearTarjeta(this)">
 <input type="text" placeholder="Ingresa tu cvv" id="cvv">
 </div>
 </div>
@@ -78,6 +78,7 @@
 <input type="text" placeholder="Ingresa tu cuenta de envio" id="cont">
 </div>
 </div>
+<button id="btn-final" onclick="finalizarCompra()">Finalizar compra</button>
        <button  id="cerrar"onclick="cerrarPago()">Cerrar</button>
 </div>
 </div>

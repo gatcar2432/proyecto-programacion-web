@@ -1,7 +1,7 @@
 let tipoActual = "";
 let carrito = [];
 let total = 0;
-
+let metodoSeleccionado = "";
 
 const menus = {
 
@@ -117,7 +117,13 @@ function vaciarCarrito(){
   document.getElementById("total").innerText = "Total: $0";
 }
 function abrirPago(){
-document.getElementById("modalPago").style.display="flex";
+if(carrito.length === 0){
+alert("Tu carrito está vacío");
+return;
+}
+
+document.getElementById("modalPago").style.display = "flex";
+
 }
 function cerrarPago(){
 document.getElementById("modalPago").style.display="none";
@@ -133,6 +139,7 @@ m.classList.remove("activo");
 
 
 function pagoTarjeta(){
+  metodoSeleccionado = "Tarjeta";
 ocultarMetodos();
 document.querySelectorAll(".metodo-pago")[0]
 .classList.add("activo");
@@ -142,6 +149,7 @@ document.querySelectorAll(".metodo-pago")[0]
 
 
 function pagoEfectivo(){
+  metodoSeleccionado = "Efectivo";
 ocultarMetodos();
 document.querySelectorAll(".metodo-pago")[1]
 .classList.add("activo");
@@ -150,9 +158,11 @@ document.querySelectorAll(".metodo-pago")[1]
 
 
 function pagoPayPal(){
+  metodoSeleccionado = "PayPal";
 ocultarMetodos();
 document.querySelectorAll(".metodo-pago")[2]
 .classList.add("activo");
+
 
 }
 
@@ -163,4 +173,54 @@ contenedor.style.display = "none";
 contenedor.innerHTML = "";
 document.getElementById("btnCerrarMenu")
 .style.display = "none";
+}
+function finalizarCompra(){
+
+if(carrito.length === 0){
+alert("No hay productos en el carrito");
+return;
+}
+
+if(metodoSeleccionado === ""){
+alert("Selecciona un método de pago");
+return;
+
+}
+
+let ticket = "===== TICKET =====\n\n";
+carrito.forEach(item=>{
+ticket +=
+item.nombre +
+" | " +
+item.tipo +
+" | $" +
+item.precio +
+"\n";
+});
+
+ticket +=
+"\nMétodo de pago: " +
+metodoSeleccionado;
+ticket +=
+"\n\nTOTAL: $" + total;
+alert(ticket);
+carrito = [];
+total = 0;
+metodoSeleccionado = "";
+document.getElementById("carrito").innerText =
+"Pedido(0) $0";
+document.getElementById("listaCarrito").innerHTML = "";
+document.getElementById("total").innerText =
+"Total: $0";
+cerrarPago();
+cerrarCarrito();
+}
+
+function formatearTarjeta(input){
+let valor = input.value;
+valor = valor.replace(/\D/g, "");
+valor = valor.replace(/(.{4})/g, "$1 ");
+valor = valor.trim();
+input.value = valor;
+
 }
