@@ -10,12 +10,20 @@ body {
   color: #BDBDBD;
   font-family: Copperplate, sans-serif;
   overflow-x: hidden; 
+height: autos;
 }
 
 h1 { color:#DAA520; text-align: center; } 
 h2, h3 { color:#BDBDBD; text-align: center; }
 
+input{
+border-radius: 20px;
+color: black;
+ background-color: white;
+ height: 40px;
+ 
 
+}
 .section {
   width: 100%;
   padding: 40px 10px; 
@@ -49,16 +57,55 @@ h2, h3 { color:#BDBDBD; text-align: center; }
 }
 
 .btn-vaciar {
-  background: rgb(254, 0, 0);
+  background: rgba(247, 141, 4, 0.877);
   color: white;
+  transition: .5s;
 }
 
 .btn-vaciar:hover {
-  background: rgba(255, 0, 0, 0.74);
-  box-shadow: 0 0 10px red;
-  transform: scale(1.1);
+  background: rgba(230, 120, 120, 0.719);
+  box-shadow: 0 0 10px rgb(255, 0, 0);
+transform: scale(.93);
 }
 
+.metodo{
+width: 100%;
+margin-top: 15px;
+padding: 15px;
+border: none;
+border-radius: 15px;
+background: gold;
+font-weight: bold;
+cursor: pointer;
+transition: .5s;
+}
+
+.metodo:hover{
+transform: translateY(-3px);
+box-shadow: 0 0 10px gold;
+}
+.btn-pagar:hover{
+  background-color:#e8f807b2;
+transform: scale(.93);
+box-shadow: 0 0 19px green;
+}
+.btn-pagar{
+  transition: .5s;
+}
+#cerrar{
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: 10px 20px;
+border: none;
+color:  rgba(0,0,0,0.9);
+cursor:pointer;
+transition: .5s;
+}
+#cerrar:hover{
+  background-color: #ee8b0abd;
+transform: scale(.93);
+box-shadow: 0 0 19px rgba(206, 3, 3, 0.459);
+}
 #reloj{
   width: 500px;
   height: auto; 
@@ -72,37 +119,7 @@ h2, h3 { color:#BDBDBD; text-align: center; }
   transition: 0.5s;
 }
 
-.idiomas {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  text-align: center; 
-  margin-right: 0; 
-}
 
-.idiomas button {
-  background: rgba(0,0,0,0.7);
-  color: #DAA520;
-  border: 1px solid gold;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.idiomas button:hover {
-  background: gold;
-  color: #1a1a1a;
-  box-shadow: 0 0 10px gold;
-}
-
-.idiomas button.activo {
-  background: gold;
-  color: #1a1a1a;
-  box-shadow: 0 0 15px gold;
-  transform: scale(1.1);
-}
 
 .menu-opciones {
   display: flex;
@@ -119,7 +136,37 @@ h2, h3 { color:#BDBDBD; text-align: center; }
 .menu-opciones div:hover {
   transform: scale(1.08);
 }
+.metodo-pago input,
+.metodo-pago p,
+.metodo-pago label{
+display:none;
+margin-top:10px;
+}
 
+.metodo-pago.activo input,
+.metodo-pago.activo p,
+.metodo-pago.activo label{
+display:block;
+}
+
+.btn-cerrar-menu{
+display:block;
+margin:40px auto;
+display: none;
+padding:12px 25px;
+background:#7a1f1f;
+color:white;
+border:none;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-cerrar-menu:hover{
+background:#a00000;
+transform:scale(1.05);
+}
 .menu-opciones img {
   width: 250px;
   height: 200px;
@@ -137,7 +184,7 @@ h2, h3 { color:#BDBDBD; text-align: center; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
-  padding: 20px; /* MODIFICADO */
+  padding: 20px; 
 }
 
 .card {
@@ -193,8 +240,8 @@ h2, h3 { color:#BDBDBD; text-align: center; }
 }
 
 .card button {
-  background: rgba(0,51,160,0.5);
-  color: #1a1a1a;
+  background: rgb(31, 104, 133);
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
@@ -252,6 +299,7 @@ h2, h3 { color:#BDBDBD; text-align: center; }
   max-width: 320px;
   text-align: center;
   box-shadow: 0 0 20px gold;
+  
 }
 
 .modal-contenido h2 {
@@ -292,6 +340,7 @@ footer {
   color: white;
   padding: 10px;
   text-align: center;
+  display: none;
 }
 
 @keyframes aparecer {
