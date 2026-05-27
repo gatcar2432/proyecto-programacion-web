@@ -68,22 +68,53 @@ color: black;
 transform: scale(.93);
 }
 
-.metodo{
+#metodoT{
 width: 100%;
 margin-top: 15px;
 padding: 15px;
 border: none;
 border-radius: 15px;
-background: gold;
+background: rgba(1, 40, 165, 0.793);
+font-weight: bold;
+cursor: pointer;
+transition: .5s;
+}
+#metodoPP{
+width: 100%;
+margin-top: 15px;
+padding: 15px;
+border: none;
+border-radius: 15px;
+background: rgb(5, 174, 196);
+font-weight: bold;
+cursor: pointer;
+transition: .5s;
+}
+#metodoE{
+width: 100%;
+margin-top: 15px;
+padding: 15px;
+border: none;
+border-radius: 15px;
+background: rgb(0, 160, 54);
 font-weight: bold;
 cursor: pointer;
 transition: .5s;
 }
 
-.metodo:hover{
+#metodoE:hover{
 transform: translateY(-3px);
-box-shadow: 0 0 10px gold;
+box-shadow: 0 0 10px rgb(9, 255, 0);
 }
+#metodoPP:hover{
+transform: translateY(-3px);
+box-shadow: 0 0 10px rgb(0, 234, 255);
+}
+#metodoT:hover{
+transform: translateY(-3px);
+box-shadow: 0 0 10px rgb(12, 46, 217);
+}
+
 .btn-pagar:hover{
   background-color:#e8f807b2;
 transform: scale(.93);
@@ -94,12 +125,12 @@ box-shadow: 0 0 19px green;
 
 }
 #btn-final{
-  background-color: rgba(128, 255, 0, 0.182);
+background-color: #DAA520;;
     transition: .5s;
 
 }
 #btn-final:hover{
-transform: translateY(-3px);
+transform: scale(.93);
 box-shadow: 0 0 19px green;
  background-color:#e8f807b2;
 }

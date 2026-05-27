@@ -57,7 +57,7 @@
   <div class="modal-contenido">
     <h2>Metodos de pago</h2>
 <div class="metodo-pago">
-  <button class="metodo" onclick="pagoTarjeta()">Tarjeta</button>
+  <button id="metodoT" onclick="pagoTarjeta()">Tarjeta</button>
 <div id="fondoPagoTarjeta">
 <input type="text" placeholder="Ingresa tu nombre completo" id="nombre">
 <input type="text" placeholder="Ingresa tu numero de tarjeta" id="numero" maxlength="19" oninput="formatearTarjeta(this)">
@@ -65,13 +65,13 @@
 </div>
 </div>
 <div class="metodo-pago">
- <button class="metodo" onclick="pagoEfectivo()">Efectivo</button>
+ <button id="metodoE" onclick="pagoEfectivo()">Efectivo</button>
  <div class="fondoPagoEfectivo">
 <p id="text">Favor de pagar en caja</p>
 </div>
 </div>
 <div class="metodo-pago">
-<button class="metodo" onclick="pagoPayPal()">PayPal</button>
+<button id="metodoPP" onclick="pagoPayPal()">PayPal</button>
  <div class="fondoPagoPayPal">
 <label for="correo">Ingresa tu Correo</label>
 <input type="text" placeholder="ejemplo@gmai.com" id="correo">
